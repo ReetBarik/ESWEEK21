@@ -12,7 +12,7 @@ import itertools
 import math
 import networkx as nx
 import sys
-
+import time
 
 #1 for #edge density, 0 for column density, 2 for #edge density naive
 score_choice = 0      
@@ -60,9 +60,9 @@ def score_column_density(l):
 
 #filename = sys.argv[1]
 
-filename = 'facebook_combined_modified.txt_Grappolo.edges' #_Degree_density.txt'
+filename = 'road-Luxemborg.txt'#_Grappolo.edges' #_Degree_density.txt'
 
-#filename = 'road-usroads.txt_Grappolo.edges'
+#filename = 'road-usroads.txt'
 
 #filename = 'Sample.txt'
 
@@ -80,6 +80,8 @@ scores = {}
 
 start = 0
 count = 1
+
+start_time = time.time()
 
 while (count <= num_blocks):
     if (count < num_blocks):
@@ -124,6 +126,8 @@ mapping = {}
 
 for vertex in range(len(offset)):
     mapping[reorder[vertex]] = vertex
+    
+print(time.time() - start_time)
     
 G = nx.relabel_nodes(G, mapping)
 
