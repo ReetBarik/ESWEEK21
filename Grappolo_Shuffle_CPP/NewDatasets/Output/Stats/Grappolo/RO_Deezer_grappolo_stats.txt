@@ -1,0 +1,22 @@
+*******************************************
+General Graph: Characteristics :
+*******************************************
+Number of vertices   :   41771
+Number of edges      :   125826
+*******************************************
+Minimum gap          :   1.000000
+Average gap          :   3490.710418
+Maximum gap          :   41601.000000
+Total (sum) gap score:   439222129.000000
+Expected value of X^2:   63228549.285434
+Variance is          :   51043490.066167
+Standard deviation   :   7144.472693
+*******************************************
+Minimum log gap      :   0.000000
+Average log gap      :   2.745916
+Maximum log gap      :   4.619104
+Total (sum) gap score:   345507.681573
+Expected value of X^2:   8.351402
+Variance is          :   0.811345
+Standard deviation   :   0.900747
+*******************************************

@@ -64,6 +64,7 @@ std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) 
 
 	score_block *scores;
 	std::vector<int> reorder;
+	std::vector<float> blockscores;
 
 	scores = (score_block *)malloc(sizeof(score_block) * num_blocks);
 
@@ -92,10 +93,11 @@ std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) 
 	std::stable_sort(scores, scores + num_blocks, doCompareScore);
 
 	// printf("%f", scoreBlock_EdgeDensity(csr, 4, 7));
-	// for (int i = 0; i < num_blocks; i++){
-	// 	printf("%f ", scores[i].score);
+	for (int i = 0; i < num_blocks; i++){
+		blockscores.push_back(scores[i].score);
+		// printf("%f ", scores[i].score);
 		// printf("%d ", scores[i].block_num);
-	// }
+	}
 
 	for (int i = 0; i < num_blocks; i++) {
 		// printf("%d ", scores[i].block_num);
@@ -116,6 +118,7 @@ std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) 
 	// printf("%d ", int(reorder.size()));
 	// }
 	return reorder;
+	// return blockscores;
 }
 
 
