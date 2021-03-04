@@ -6,14 +6,18 @@ Created on Tue Mar  2 19:13:12 2021
 """
 
 import os
-os.chdir('C:/Users/reetb/Desktop/NewDatasets/Output/Edgelists/Grappolo/')
+os.chdir('C:/Users/reetb/Desktop/ESWEEK21/Grappolo_Shuffle_CPP/Natural/')
 
 import pandas as pd
 import networkx as nx
 
-df = pd.read_csv('twitter_combined.txt_Grappolo.edges', sep = ' ', header = None)
+filename = 'twitter_combined.txt'
 
-df.to_csv('twitter_combined.txt_Grappolo.edges', index=False)
+df = pd.read_csv(filename, sep = ' ', header = None)
+df[0] = df[0] + 1
+df[1] = df[1] + 1
+
+df.to_csv(filename, sep = ' ', header = False, index=False)
 
 
 #inputGraph = 'twitter_combined.txt_Grappolo.edges'

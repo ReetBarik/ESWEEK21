@@ -55,7 +55,7 @@ float scoreBlock(CSR csr, int start, int end, int choice) {
 	
 }
 
-std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) {
+std::vector<float> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) {
 	
 	int num_blocks = (num_nodes / 64) + 1;
 	int count = 1;
@@ -90,7 +90,7 @@ std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) 
 		}
 	}
 
-	std::stable_sort(scores, scores + num_blocks, doCompareScore);
+	// std::stable_sort(scores, scores + num_blocks, doCompareScore);
 
 	// printf("%f", scoreBlock_EdgeDensity(csr, 4, 7));
 	for (int i = 0; i < num_blocks; i++){
@@ -117,8 +117,8 @@ std::vector<int> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice) 
 	// for (int i = 0; i < num_nodes; i++) {
 	// printf("%d ", int(reorder.size()));
 	// }
-	return reorder;
-	// return blockscores;
+	// return reorder;
+	return blockscores;
 }
 
 
@@ -139,12 +139,12 @@ int main(int argc, char **argv) {
     printf("Graph: %s, nodes: %d, edges: %d\n", tmpchar, csr.nrows, csr.nnz);
 
     double time = gettime();
-    std::vector<int> r = shuffle_csr(csr, csr.nrows, csr.nnz, choice);
+    std::vector<float> r = shuffle_csr(csr, csr.nrows, csr.nnz, choice);
     printf("%lf",(gettime() - time ));
     // printf("%d", int(r.size()));
 
     std::ofstream output_file("reorder.txt");
-    std::ostream_iterator<int> output_iterator(output_file, "\n");
+    std::ostream_iterator<float> output_iterator(output_file, "\n");
     std::copy(r.begin(), r.end(), output_iterator);
 
     // for (int i = 0; i < csr.nrows + 1; i ++)
