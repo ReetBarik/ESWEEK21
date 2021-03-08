@@ -90,7 +90,7 @@ std::vector<float> shuffle_csr(CSR csr, int num_nodes, int num_edges, int choice
 		}
 	}
 
-	// std::stable_sort(scores, scores + num_blocks, doCompareScore);
+	std::stable_sort(scores, scores + num_blocks, doCompareScore);
 
 	// printf("%f", scoreBlock_EdgeDensity(csr, 4, 7));
 	for (int i = 0; i < num_blocks; i++){
