@@ -6,7 +6,7 @@ Created on Mon Mar 29 19:49:55 2021
 """
 
 import os
-os.chdir('C:\\Users\\reetb\\Desktop\\ESWEEK_Paper')
+os.chdir('C:\\Users\\reetb\\Desktop\\ESWEEK21\\ESWEEK_Paper')
 
 import networkx as nx
 from matplotlib import pyplot, patches
@@ -38,7 +38,7 @@ def draw_adjacency_matrix(G, name, node_order=None, partitions=[], colors=[]):
         rcm = list(reverse_cuthill_mckee_ordering(G))
         adjacency_matrix = nx.adjacency_matrix(G, nodelist=rcm)
     else:
-        adjacency_matrix = nx.adjacency_matrix(G, nodelist=node_order)
+        adjacency_matrix = nx.adjacency_matrix(G, nodelist=list(range(0,28)))
     adjacency_matrix = adjacency_matrix.todense()
     fig, ax = plt.subplots()
 
@@ -54,12 +54,13 @@ def draw_adjacency_matrix(G, name, node_order=None, partitions=[], colors=[]):
     plt.xticks(np.arange(0, 28, 2))
     plt.yticks(np.arange(0, 28, 2))
     ax.imshow(adjacency_matrix, interpolation='none', cmap=cmap, norm=norm)
-    fig.savefig(str(name) + '.png', dpi = 500)
+    fig.savefig(str(name) + '_revised.png', dpi = 500)
     
             
             
-filename = ['ToyEdgelist.txt', 'ToyEdgelist.txt', 'ToyEdgelist.txt_Grappolo.edges', 'ToyEdgelist.txt_Gorder.edges']            
+filename = ['ToyEdgelist1.txt', 'ToyEdgelist1.txt', 'ToyEdgelist.txt_Grappolo.edges', 'ToyEdgelist.txt_Gorder.edges']            
 
 for i in range(0,2):
     G = nx.read_edgelist(filename[i], nodetype = int)
+    print(G.nodes())
     draw_adjacency_matrix(G, i)
