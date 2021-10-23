@@ -6,22 +6,22 @@ Created on Tue Mar  2 19:13:12 2021
 """
 
 import os
-os.chdir('C:/Users/reetb/Desktop/ESWEEK21/Grappolo_Shuffle_CPP/Natural/')
+os.chdir('C:/Users/reetb/Desktop/ESWEEK21/Grappolo_Shuffle_CPP/')
 
 import pandas as pd
 import networkx as nx
 
-filename = 'twitter_combined.txt'
+filename = 'soc-LiveJournal1.txt_Grappolo.edges'
 
 df = pd.read_csv(filename, sep = ' ', header = None)
-df[0] = df[0] + 1
-df[1] = df[1] + 1
+df[0] = df[0] - 1
+df[1] = df[1] - 1
 
 df.to_csv(filename, sep = ' ', header = False, index=False)
 
 
 #inputGraph = 'twitter_combined.txt_Grappolo.edges'
-vertexList = 'TwitterReorder.txt'
+vertexList = 'LiveJornalReorder.txt'
 
 def read_integers(filename):
     with open(filename) as f:
@@ -38,7 +38,7 @@ for i in range(len(vertices)):
 df[0] = [mapping[i] for i in df[0]]
 df[1] = [mapping[i] for i in df[1]]
 
-df.to_csv('twitter_combined.txt_GrappoloShuffle.edges', index=False)
+df.to_csv('LiveJournal.txt_GrappoloShuffle.edges', sep = " ", header = False, index=False)
 #
 #for i in range(len(df)):
 #    df[0][i] =  vertices[df[0][i]]
